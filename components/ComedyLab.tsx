@@ -69,8 +69,8 @@ const ComedyLab: React.FC<Props> = ({ context }) => {
             <textarea 
               value={highlight}
               onChange={(e) => setHighlight(e.target.value)}
-              placeholder="请输入你想讲解的产品亮点，例如：分红稳定性、康养社区服务、保本属性等..."
-              className="w-full h-40 p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium text-slate-700 resize-none"
+              placeholder="请输入你想讲解的产品亮点，这里不限输入字数..."
+              className="w-full h-56 p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium text-slate-700 resize-none"
             />
           </div>
 
@@ -100,19 +100,19 @@ const ComedyLab: React.FC<Props> = ({ context }) => {
                     <div className="w-1.5 h-6 bg-blue-600 rounded-full"></div>
                     <span className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">LIVE Script Output</span>
                   </div>
-                  <div className="prose prose-slate max-w-none flex-grow overflow-y-auto">
+                  <div className="prose prose-slate max-w-none flex-grow overflow-y-auto pr-2 custom-scrollbar">
                     <ReactMarkdown>{result}</ReactMarkdown>
                   </div>
                   <div className="mt-8 pt-6 border-t border-slate-50 flex items-center justify-between">
-                    <p className="text-[10px] text-slate-400 font-bold italic">Style: {comedian}'s Flow</p>
+                    <p className="text-[10px] text-slate-400 font-bold italic">Performed by: {comedian}</p>
                     <button 
                       onClick={() => {
                         navigator.clipboard.writeText(result);
-                        alert('脚本已复制！');
+                        alert('脚本已复制，快去讲给代理人听吧！');
                       }} 
-                      className="text-xs text-blue-600 font-bold hover:underline"
+                      className="bg-blue-600 text-white px-6 py-2 rounded-xl text-xs font-bold hover:bg-blue-700 transition-all shadow-md"
                     >
-                      <i className="fas fa-copy mr-1"></i> 复制脚本
+                      <i className="fas fa-copy mr-2"></i> 复制脚本
                     </button>
                   </div>
                 </>
@@ -131,6 +131,11 @@ const ComedyLab: React.FC<Props> = ({ context }) => {
           </div>
         </div>
       </div>
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+      `}</style>
     </div>
   );
 };

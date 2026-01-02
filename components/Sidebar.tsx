@@ -12,6 +12,8 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isOpen, toggle }) => {
   const menuItems = [
     { id: AppTab.DASHBOARD, label: '每日视点', icon: 'fa-chart-line' },
+    { id: AppTab.BENCHMARK, label: '对标实验室', icon: 'fa-chart-area' },
+    { id: AppTab.EVALUATION, label: '险企评价', icon: 'fa-building-shield' }, // 新增
     { id: AppTab.STRATEGY, label: '销售实验室', icon: 'fa-lightbulb' },
     { id: AppTab.COMEDY, label: '脱口秀剧场', icon: 'fa-microphone-lines' },
     { id: AppTab.MEME, label: '热梗实验站', icon: 'fa-fire-flame-curved' },
@@ -34,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isOpen, togg
         </button>
       </div>
 
-      <nav className="flex-1 px-3 space-y-1 mt-4">
+      <nav className="flex-1 px-3 space-y-1 mt-4 overflow-y-auto custom-scrollbar">
         {menuItems.map((item) => (
           <button
             key={item.id}
@@ -62,6 +64,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, isOpen, togg
           </div>
         </div>
       </div>
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar { width: 0px; }
+      `}</style>
     </div>
   );
 };
